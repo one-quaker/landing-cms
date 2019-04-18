@@ -37,7 +37,20 @@ class Skill(PositionMixin):
     block = models.ForeignKey('Block', on_delete=models.SET_NULL, related_name='skill_list', blank=True, null=True)
     name = models.CharField(max_length=32)
     icon = models.FileField(upload_to='skill')
-    content = models.TextField(max_length=2048, default='')
+    text = models.TextField(max_length=2048, default='')
+
+    class Meta:
+        ordering = ['position', ]
+
+    def __str__(self):
+        return self.name
+
+
+class Team(PositionMixin):
+    block = models.ForeignKey('Block', on_delete=models.SET_NULL, related_name='team_list', blank=True, null=True)
+    name = models.CharField(max_length=32)
+    photo = models.ImageField(upload_to='team')
+    text = models.TextField(max_length=2048, default='')
 
     class Meta:
         ordering = ['position', ]

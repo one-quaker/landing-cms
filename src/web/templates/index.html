@@ -4,20 +4,6 @@
 
 {% block title %}Landing page{% endblock title %}
 
-{% block css %}
-    {{ block.super }}
-    <style media="screen">
-        .block {
-            padding-top: 64px;
-            padding-bottom: 16px;
-        }
-        .block h1 {
-            font-size: 48pt;
-        }
-    </style>
-{% endblock css %}
-
-
 {% block content %}
     {% include '_navbar.html' with class_list='sticky-top navbar-expand-lg navbar-dark bg-dark' %}
 
@@ -25,13 +11,37 @@
         {% for block in block_list %}
             <div class="block" id="{{ block.html_id }}">
                 <div class="row">
-                    <div class="col-sm text-center">
+                    <div class="intro-text col-sm text-center">
                         {{ block.content|mark2|safe }}
                     </div>
                 </div>
-
                 {% include '_skill.html' with item_list=block.skill_list.all %}
+                {% include '_team.html' with item_list=block.team_list.all %}
             </div>
         {% endfor %}
     </div>
 {% endblock content %}
+
+{% block css %}
+    {{ block.super }}
+    <style media="screen">
+        .block {
+            padding-top: 128px;
+            padding-bottom: 16px;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        .block .intro-text {
+            padding-bottom: 32px;
+        }
+        .block .intro-text p {
+            font-family: 'Roboto',Arial,sans-serif;
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+        .block h1 {
+            font-size: 48pt;
+        }
+    </style>
+{% endblock css %}
