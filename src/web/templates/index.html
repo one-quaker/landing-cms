@@ -22,14 +22,16 @@
         <ul>
             {% for block in block_list %}
                 {% if block.in_menu %}
-                    <li>{{ block.name }}</li>
+                    <li>
+                        <a href="#{{ block.html_id }}">{{ block.name }}</a>
+                    </li>
                 {% endif %}
             {% endfor %}
         </ul>
     </nav>
 
     {% for block in block_list %}
-        <div class="block">
+        <div class="block" id="{{ block.html_id }}">
             <p>{{ block.content|mark2|safe }}</p>
         </div>
         <hr>

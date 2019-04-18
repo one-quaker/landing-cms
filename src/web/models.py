@@ -19,3 +19,7 @@ class Block(CreatedMixin):
 
     def __str__(self):
         return self.name
+
+    @property
+    def html_id(self):
+        return 'block-{}'.format(self.pk)
