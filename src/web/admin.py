@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Block
+from .models import Block, Skill
 
 
 
@@ -12,3 +12,4 @@ class BlockAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Block, BlockAdmin)
+admin.site.register(Skill)

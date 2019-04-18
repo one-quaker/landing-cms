@@ -7,6 +7,10 @@
 {% block css %}
     {{ block.super }}
     <style media="screen">
+        .block {
+            padding-top: 64px;
+            padding-bottom: 16px;
+        }
         .block h1 {
             font-size: 48pt;
         }
@@ -30,10 +34,17 @@
         </ul>
     </nav>
 
-    {% for block in block_list %}
-        <div class="block" id="{{ block.html_id }}">
-            <p>{{ block.content|mark2|safe }}</p>
-        </div>
-        <hr>
-    {% endfor %}
+    <div class="block-list">
+        {% for block in block_list %}
+            <div class="block" id="{{ block.html_id }}">
+                <div class="row">
+                    <div class="col-sm text-center">
+                        {{ block.content|mark2|safe }}
+                    </div>
+                </div>
+
+                {% include '_skill.html' with item_list=block.skill_list.all %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
