@@ -132,3 +132,16 @@ MEDIA_URL = '/media/'
 for d in (PUBLIC_DIR, STATIC_ROOT, MEDIA_ROOT):
     if not os.path.isdir(d):
         os.mkdir(d)
+
+
+if DEBUG:
+    ALLOWED_HOSTS += ['*', ]
+    def show_toolbar(request):
+        return True
+
+    INSTALLED_APPS += ['debug_toolbar', ]
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+    }
