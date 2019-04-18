@@ -1,31 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load mark_tags %}
 
 {% block title %}Landing page{% endblock title %}
 
 {% block css %}
     {{ block.super }}
     <style media="screen">
-        .item-list {
-            color: #39CCCC;
-            font-weight: bold;
-        }
         .block h1 {
             font-size: 48pt;
+        }
+        .menu {
+            list-style-type: none;
         }
     </style>
 {% endblock css %}
 
 
 {% block content %}
+    <nav class="menu">
+        <ul>
+            {% for block in block_list %}
+                {% if block.in_menu %}
+                    <li>{{ block.name }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+
     {% for block in block_list %}
         <div class="block">
-            <h1>{{ block.name }}</h1>
-            <div class="item-list">
-                {% for item in block.content %}
-                    {{ item }}{% if not forloop.last %},{% endif %}
-                {% endfor %}
-            </div>
+            <p>{{ block.content|mark2|safe }}</p>
         </div>
+        <hr>
     {% endfor %}
 {% endblock content %}
