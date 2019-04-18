@@ -1,0 +1,49 @@
+version: '3.2'
+
+services:
+    db:
+        image: postgres:10.7
+        env_file:
+            - app_env/db
+        environment:
+            - PGDATA=/var/lib/postgresql/data
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+
+    landing-web:
+        env_file:
+            - app_env/db
+        environment:
+            - DEBUG=0
+        image: landing-web
+        build:
+            dockerfile: ./dev/Dockerfile
+            context: ./
+        entrypoint: ['/bin/bash', '/entrypoint.sh', 'gunicorn']
+        volumes:
+            - ./src:/python_app
+        ports:
+            - '127.0.0.1:8100:8000'
+        depends_on:
+            - db
+        restart: always
+
+    landing-dev:
+        env_file:
+            - app_env/db
+        environment:
+            - DEBUG=1
+        image: landing-dev
+        build:
+            dockerfile: ./dev/Dockerfile
+            context: ./
+        volumes:
+            - ./src:/python_app
+        ports:
+            - '127.0.0.1:8101:8000'
+        depends_on:
+            - db
+
+volumes:
+    pgdata:
+        driver: local
