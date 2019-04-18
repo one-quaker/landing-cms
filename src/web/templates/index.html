@@ -14,25 +14,12 @@
         .block h1 {
             font-size: 48pt;
         }
-        .menu {
-            list-style-type: none;
-        }
     </style>
 {% endblock css %}
 
 
 {% block content %}
-    <nav class="menu">
-        <ul>
-            {% for block in block_list %}
-                {% if block.in_menu %}
-                    <li>
-                        <a href="#{{ block.html_id }}">{{ block.name }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </nav>
+    {% include '_navbar.html' with class_list='sticky-top navbar-expand-lg navbar-dark bg-dark' %}
 
     <div class="block-list">
         {% for block in block_list %}

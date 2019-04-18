@@ -1,0 +1,18 @@
+<nav class="navbar {{ class_list }}">
+    <a class="navbar-brand" href="#">Landing Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            {% for block in block_list %}
+                {% if block.in_menu %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#{{ block.html_id }}">{{ block.name }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>
