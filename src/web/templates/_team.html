@@ -2,8 +2,8 @@
     <div class="row">
         {% for item in item_list %}
             <div class="team col-md-3 col-sm-6 text-center">
-                <img class="img-fluid" style="border-radius: 50%;" src="{{ item.photo.url }}" width="256" height="256" alt="">
-                <h3>{{ item.name }}</h3>
+                <img class="member-photo img-fluid" style="border-radius: 50%;" src="{{ item.photo.url }}" alt="{{ item.name }}" width="200">
+                <h3 class="member-name">{{ item.name }}</h3>
                 <p class="text-muted">{{ item.text }}</p>
             </div>
         {% endfor %}

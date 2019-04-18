@@ -3,7 +3,7 @@
         {% for item in item_list %}
             <div class="skill col-md-4 col-sm-6 text-center">
                 <img src="{{ item.icon.url }}" width="96" alt="">
-                <h3>{{ item.name }}</h3>
+                <h3 class="skill-name">{{ item.name }}</h3>
                 <p>{{ item.text }}</p>
             </div>
         {% endfor %}
