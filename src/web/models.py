@@ -46,7 +46,7 @@ class Skill(PositionMixin):
         return self.name
 
 
-class Team(PositionMixin):
+class TeamMember(PositionMixin):
     block = models.ForeignKey('Block', on_delete=models.SET_NULL, related_name='team_list', blank=True, null=True)
     name = models.CharField(max_length=32)
     photo = models.ImageField(upload_to='team')

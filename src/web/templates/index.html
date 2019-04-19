@@ -5,7 +5,7 @@
 {% block title %}Landing page{% endblock title %}
 
 {% block content %}
-    {% include '_navbar.html' with class_list='sticky-top navbar-expand-lg navbar-dark bg-dark' %}
+    {% include '_navbar.html' %}
 
     <div class="block-list">
         {% for block in block_list %}
@@ -48,6 +48,11 @@
             font-weight: 300;
             font-size: 22px;
             line-height: 1.5;
+        }
+
+
+        .navbar {
+            padding-left:2%;
         }
 
 

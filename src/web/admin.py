@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Block, Skill, Team
+from .models import Block, Skill, TeamMember
 
 
 
@@ -13,4 +13,4 @@ class BlockAdmin(admin.ModelAdmin):
 
 admin.site.register(Block, BlockAdmin)
 admin.site.register(Skill)
-admin.site.register(Team)
+admin.site.register(TeamMember)
