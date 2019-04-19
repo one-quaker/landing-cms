@@ -1,18 +1,21 @@
 FROM ubuntu:18.04
 
+ENV PYTHON_VERSION=3.7.2
+ENV PYENV_VERSION=1.2.9
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
-RUN apt update -y
-RUN apt upgrade -y
-
-RUN apt install -y git make build-essential
-RUN apt install -y sudo bash curl
-RUN apt install -y libev-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl
-RUN apt install -y wget nano vim tmux htop
-
-ENV PYTHON_VERSION=3.7.2
-ENV PYENV_VERSION=1.2.9
+RUN apt update -y && apt upgrade -y
+RUN apt install -y git make build-essential \
+    sudo bash zsh curl wget nano vim tmux htop tzdata locales \
+    postgresql-client iputils-ping telnet
+RUN apt install -y libev-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+    libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils \
+    tk-dev libffi-dev liblzma-dev python-openssl \
+    mysql-client libmysqlclient-dev \
+    libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+RUN apt clean
 
 ENV USER=web-user
 ENV HOME=/home/$USER
@@ -35,7 +38,6 @@ ENV SHELL_ENV_FP=$HOME/$SHELL_FN
 RUN useradd -m -s /bin/bash -u 5000 -U $USER # important on linux platform, you need to create user for docker with same uid (5000)
 
 RUN echo 'Europe/Kiev' > /etc/timezone
-RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 USER $USER
@@ -58,10 +60,6 @@ USER root
 RUN mkdir $APP_DIR
 RUN chown $USER:$USER -R $APP_DIR
 
-USER root
-RUN apt install -y mysql-client libmysqlclient-dev
-RUN apt install -y libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
-
 USER $USER
 WORKDIR $APP_DIR
 COPY ./src/requirements.txt $APP_DIR
@@ -72,12 +70,10 @@ RUN $ENV_PIP_BIN install -r requirements.txt
 ENV ZSH_CONF_FN=.zshrc
 ENV ZSH_CONF_FP=$HOME/$ZSH_CONF_FN
 USER root
-RUN apt install -y zsh
 RUN chsh $USER -s /bin/zsh
 
 # Set the locale
 USER root
-RUN apt install -y locales
 ARG LANG=en_US.UTF-8
 RUN locale-gen $LANG
 ENV LANG=$LANG
@@ -95,9 +91,6 @@ RUN sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="ys"/g' $ZSH_CONF_FP
 RUN echo "export LANG=$LANG" >> $ZSH_CONF_FP
 RUN echo "workon $APP_NAME" >> $ZSH_CONF_FP
 WORKDIR $APP_DIR
-
-USER root
-RUN apt -y install postgresql-client iputils-ping telnet
 
 # add entrypoint script
 USER root

@@ -31,5 +31,8 @@ build:
 	docker login
 	docker-compose -f docker-compose-build.yml build
 
-build_push: build
+push:
+	docker login
 	docker-compose -f docker-compose-build.yml push
+
+build_push: build push
