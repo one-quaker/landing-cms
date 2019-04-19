@@ -1,8 +1,12 @@
+{% load thumbnail %}
+
 {% if item_list %}
     <div class="row">
         {% for item in item_list %}
-            <div class="team col-md-3 col-sm-6 text-center">
-                <img class="member-photo img-fluid" style="border-radius: 50%;" src="{{ item.photo.url }}" alt="{{ item.name }}" width="200">
+            <div class="team col-md-3 col-sm-6 text-center" style="padding-bottom: 64px;">
+                {% thumbnail item.photo "256x256" crop="center" quality=90 as im %}
+                    <img class="member-photo img-fluid" style="border-radius: 50%;" src="{{ im.url }}" alt="{{ item.name }}" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %}
                 <h3 class="member-name">{{ item.name }}</h3>
                 <p class="text-muted">{{ item.text }}</p>
             </div>
