@@ -10,15 +10,12 @@ services:
         volumes:
             - pgdata:/var/lib/postgresql/data
 
-    landing-web:
+    app-prod:
         env_file:
             - app_env/db
         environment:
             - DEBUG=0
-        image: landing-web
-        build:
-            dockerfile: ./dev/Dockerfile
-            context: ./
+        image: onepycoder/python:3.7.2.1
         entrypoint: ['/bin/bash', '/entrypoint.sh', 'gunicorn']
         volumes:
             - ./src:/python_app
@@ -28,15 +25,12 @@ services:
             - db
         restart: always
 
-    landing-dev:
+    app-dev:
         env_file:
             - app_env/db
         environment:
             - DEBUG=1
-        image: landing-dev
-        build:
-            dockerfile: ./dev/Dockerfile
-            context: ./
+        image: onepycoder/python:3.7.2.1
         volumes:
             - ./src:/python_app
         ports:

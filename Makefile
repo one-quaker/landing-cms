@@ -1,4 +1,4 @@
-APP_NAME=landing-dev
+APP_NAME=app-dev
 
 
 start_docker:
@@ -26,3 +26,10 @@ rebuild_docker:
 	docker-compose up --force-recreate --build -d
 
 force_rebuild_docker: down_docker rebuild_docker
+
+build:
+	docker login
+	docker-compose -f docker-compose-build.yml build
+
+build_push: build
+	docker-compose -f docker-compose-build.yml push
