@@ -18,7 +18,6 @@ class PositionMixin(models.Model):
 
 class Block(PositionMixin, CreatedMixin):
     name = models.CharField(max_length=32)
-    position = models.PositiveIntegerField(default=0)
     in_menu = models.BooleanField(default=False)
     content = models.TextField(max_length=2048, default='')
 
