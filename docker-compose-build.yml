@@ -5,10 +5,10 @@ services:
         build:
             dockerfile: ./dev/Dockerfile
             context: ./
-        image: onepycoder/python:3.7.2.21
+        image: onepycoder/python:3.7.2.25
 
     python_build_cms:
         build:
             dockerfile: ./dev/Dockerfile_cms
             context: ./
-        image: onepycoder/landing_cms:1.0
+        image: onepycoder/landing_cms:1.04
