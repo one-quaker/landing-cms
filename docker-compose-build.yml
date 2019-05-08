@@ -9,6 +9,6 @@ services:
 
     python_build_cms:
         build:
-            dockerfile: ./dev/Dockerfile_cms
+            dockerfile: ./dev/cms.Dockerfile
             context: ./
         image: onepycoder/landing_cms:1.04

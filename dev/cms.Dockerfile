@@ -1,6 +1,6 @@
 FROM onepycoder/python:3.7.2.25
 
-TZ='Europe/Kiev'
+ENV TZ=Europe/Kiev
 ARG DEV_DIR=dev
 
 USER $USER
