@@ -11,4 +11,4 @@ services:
         build:
             dockerfile: ./dev/cms.Dockerfile
             context: ./
-        image: onepycoder/landing_cms:1.04
+        image: onepycoder/landing_cms:latest
