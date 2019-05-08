@@ -60,12 +60,6 @@ USER root
 RUN mkdir $APP_DIR
 RUN chown $USER:$USER -R $APP_DIR
 
-USER $USER
-WORKDIR $APP_DIR
-COPY ./src/requirements.txt $APP_DIR
-RUN $ENV_PIP_BIN install -U pip
-RUN $ENV_PIP_BIN install -r requirements.txt
-
 # ohmyzsh
 ENV ZSH_CONF_FN=.zshrc
 ENV ZSH_CONF_FP=$HOME/$ZSH_CONF_FN
