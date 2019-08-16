@@ -13,6 +13,7 @@ class SkillInline(admin.TabularInline):
     extra = 1
 
 
+@admin.register(Block)
 class BlockAdmin(admin.ModelAdmin):
     model = Block
 
@@ -23,9 +24,10 @@ class BlockAdmin(admin.ModelAdmin):
     skill_inline = [SkillInline, ]
     team_inline = [TeamMemberInline, ]
 
-
     def get_inline_instances(self, request, obj=None):
         inline_instances = []
+        if not obj:
+            return inline_instances
 
         if obj.skill_list.all():
             inlines = self.skill_inline
@@ -40,6 +42,13 @@ class BlockAdmin(admin.ModelAdmin):
         return inline_instances
 
 
-admin.site.register(Block, BlockAdmin)
-admin.site.register(Skill)
-admin.site.register(TeamMember)
+@admin.register(Skill)
+class SkillAdmin(admin.ModelAdmin):
+    list_display = ('name', 'text', 'icon', 'block')
+    list_filter = ('block', )
+
+
+@admin.register(TeamMember)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'text', 'photo', 'block')
+    list_filter = ('block', )
