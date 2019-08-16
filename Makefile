@@ -36,3 +36,6 @@ push:
 	docker-compose -f docker-compose-build.yml push
 
 build_push: build push
+
+fix_perm:
+	chmod 777 ./src/public

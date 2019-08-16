@@ -105,3 +105,7 @@ venv.bak/
 
 # exclude db directory
 db/
+
+# exclude public dir
+src/public/media/
+src/public/static/
