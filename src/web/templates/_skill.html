@@ -1,10 +1,19 @@
+{% load thumbnail %}
+
 {% if item_list %}
     <div class="row">
         {% for item in item_list %}
             <div class="skill col-md-4 col-sm-6 text-center">
-                <img src="{{ item.icon.url }}" width="96" alt="">
+                {% if item.icon_is_svg %}
+                    <img src="{{ item.icon.url }}" width="96" alt="">
+                {% else %}
+                    {% thumbnail item.icon "96x96" crop="center" quality=90 as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="">
+                    {% endthumbnail %}
+                {% endif %}
                 <h3 class="skill-name">{{ item.name }}</h3>
                 <p>{{ item.text }}</p>
+                {{ item.icon_is_svg }}
             </div>
         {% endfor %}
     </div>

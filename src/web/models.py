@@ -44,6 +44,15 @@ class Skill(PositionMixin):
     def __str__(self):
         return self.name
 
+    @property
+    def icon_is_svg(self):
+        is_svg = False
+        try:
+            is_svg = self.icon.name.lower().split('.')[-1] == 'svg'
+        except Exception as e:
+            print(e)
+        return is_svg
+
 
 class TeamMember(PositionMixin):
     block = models.ForeignKey('Block', on_delete=models.SET_NULL, related_name='team_list', blank=True, null=True)
