@@ -1,0 +1,103 @@
+<style media="screen">
+    .text-uppercase {
+        text-transform: uppercase!important;
+    }
+
+    .navbar {
+        background-color: #2c3e50!important;
+    }
+
+    .navbar li a {
+        color: #fff!important;
+    }
+
+    #mainNav .navbar-brand {
+        color: #fff;
+    }
+
+    @media (min-width: 992px) {
+      #mainNav {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        transition: padding-top 0.3s, padding-bottom 0.3s;
+      }
+      #mainNav .navbar-brand {
+        font-size: 1.75em;
+        transition: font-size 0.3s;
+      }
+      #mainNav .navbar-nav {
+        margin-top: 0;
+      }
+      #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+        color: #fff;
+        background: #1abc9c;
+      }
+      #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+        color: #fff;
+        background: #1abc9c;
+      }
+      #mainNav.navbar-shrink {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      #mainNav.navbar-shrink .navbar-brand {
+        font-size: 1.5em;
+      }
+    }
+
+    #mainNav {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-family: Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-weight: 700;
+    }
+
+    .navbar-expand-sm .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .block {
+        margin-left: 15%;
+        margin-right: 15%;
+        padding-top: 128px;
+        padding-bottom: 64px;
+    }
+
+    .block h1 {
+        font-size: 48pt;
+    }
+
+    .block h1, .block h2, .block h3, .block h4, .block h5, .block h6 {
+        margin-bottom: 32px;
+    }
+
+    .block .intro-text {
+        margin-bottom: 60px;
+    }
+
+    .block .intro-text p {
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 1.5;
+    }
+
+    .block .skill .skill-name {
+        margin-bottom: 25px;
+        margin-top: 12px;
+        font-size: 30px;
+    }
+
+    .block .team .member-photo {
+        margin-bottom: 20px;
+    }
+
+    .block .team .member-name {
+        margin-bottom: 4px;
+    }
+</style>

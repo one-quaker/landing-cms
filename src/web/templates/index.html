@@ -24,45 +24,10 @@
 
 {% block css %}
     {{ block.super }}
-    <style media="screen">
-        .container-fluid {
-            padding-right: 0px;
-            padding-left: 0px;
-        }
-        .block {
-            margin-left: 15%;
-            margin-right: 15%;
-            padding-top: 64px;
-            padding-bottom: 64px;
-        }
-        .block h1 {
-            font-size: 48pt;
-        }
-        .block h1, .block h2, .block h3, .block h4, .block h5, .block h6 {
-            margin-bottom: 32px;
-        }
-        .block .intro-text {
-            margin-bottom: 60px;
-        }
-        .block .intro-text p {
-            font-weight: 300;
-            font-size: 22px;
-            line-height: 1.5;
-        }
-
-
-        .block .skill .skill-name {
-            margin-bottom: 25px;
-            margin-top: 12px;
-            font-size: 30px;
-        }
-
-
-        .block .team .member-photo {
-            margin-bottom: 20px;
-        }
-        .block .team .member-name {
-            margin-bottom: 4px;
-        }
-    </style>
+    {% include 'main.css' %}
 {% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    {% include 'main.js' %}
+{% endblock js %}

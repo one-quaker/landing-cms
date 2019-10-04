@@ -103,6 +103,9 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# mac
+.DS_Store
+
 # exclude db directory
 db/
 

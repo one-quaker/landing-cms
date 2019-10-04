@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
-ENV PYTHON_VERSION=3.7.2
-ENV PYENV_VERSION=1.2.11
+ENV PYTHON_VERSION=3.7.4
+ENV PYENV_VERSION=1.2.13
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -75,6 +75,7 @@ ENV LC_ALL=$LANG
 ENV TERM=xterm
 USER $USER
 WORKDIR $HOME
+
 # run the installation script
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true \
 && echo ". $SHELL_ENV_FP" >> $ZSH_CONF_FP \

@@ -15,7 +15,7 @@ services:
             - app_env/db
         environment:
             - DEBUG=0
-        image: onepycoder/landing_cms:1.01
+        image: onepycoder/landing_cms:1.02
         entrypoint: ['/bin/bash', '/entrypoint.sh', 'gunicorn', 'landing_cms']
         volumes:
             - ./src:/python_app
@@ -30,7 +30,7 @@ services:
             - app_env/db
         environment:
             - DEBUG=1
-        image: onepycoder/landing_cms:1.01
+        image: onepycoder/landing_cms:1.02
         volumes:
             - ./src:/python_app
         ports:
