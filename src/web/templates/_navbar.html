@@ -11,7 +11,7 @@
           {% for block in block_list %}
               {% if block.in_menu %}
                   <li class="nav-item nav-item mx-0 mx-lg-1">
-                      <a class="nav-link text-uppercase py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#{{ block.html_id }}">{{ block.name|capfirst }}</a>
+                      <a class="nav-link text-uppercase py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#{{ block.html_id }}">{{ block.menu_name|capfirst }}</a>
                   </li>
               {% endif %}
           {% endfor %}
@@ -19,3 +19,5 @@
     </div>
   </div>
 </nav>
+
+<div id="page-top"></div>

@@ -16,7 +16,7 @@ services:
         environment:
             - DEBUG=${DEBUG}
             - ALLOWED_HOSTS=${ALLOWED_HOSTS}
-        image: onepycoder/landing_cms:1.05
+        image: onepycoder/landing_cms:1.06
         entrypoint: ['/bin/bash', '/entrypoint.sh', 'landing_cms']
         volumes:
             - ./src:/python_app

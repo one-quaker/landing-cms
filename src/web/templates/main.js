@@ -1,5 +1,5 @@
 <script type="text/javascript">
-(function($) {
+$(document).ready(function() {
   "use strict"; // Start of use strict
 
   // Scroll to top button appear
@@ -31,5 +31,5 @@
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 
-})(jQuery); // End of use strict
+}); // End of use strict
 </script>

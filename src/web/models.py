@@ -17,6 +17,7 @@ class PositionMixin(models.Model):
 
 
 class Block(PositionMixin, CreatedMixin):
+    menu_name = models.CharField(max_length=32)
     name = models.CharField(max_length=32)
     in_menu = models.BooleanField(default=False)
     content = models.TextField(max_length=2048, default='')
@@ -29,7 +30,7 @@ class Block(PositionMixin, CreatedMixin):
 
     @property
     def html_id(self):
-        return 'block-{}'.format(self.pk)
+        return self.name.replace(' ', '-').lower()
 
 
 class Skill(PositionMixin):

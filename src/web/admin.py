@@ -17,7 +17,7 @@ class SkillInline(admin.TabularInline):
 class BlockAdmin(admin.ModelAdmin):
     model = Block
 
-    list_display = ('name', 'created_at', 'position', 'in_menu')
+    list_display = ('name', 'menu_name', 'created_at', 'position', 'in_menu')
     list_filter = ('name', 'created_at')
 
     inlines = []
