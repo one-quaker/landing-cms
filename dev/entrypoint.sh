@@ -8,7 +8,7 @@ while [ "true" ]; do
         echo "$MPY_FP runserver 0.0.0.0:8000"
     else
         echo "Production mode"
-        $MPY_FP migrate && $ENV_BIN_ROOT/gunicorn $2.wsgi:application --name $2 --workers 2 --bind=0.0.0.0:8000 --reload --log-level=debug --log-file=-
+        $MPY_FP migrate && $ENV_BIN_ROOT/gunicorn $1.wsgi:application --name $1 --workers 2 --bind=0.0.0.0:8000 --reload --log-level=debug --log-file=-
     fi
     /bin/sleep 10
 done
