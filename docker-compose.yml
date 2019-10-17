@@ -10,12 +10,12 @@ services:
         volumes:
             - ./db:/var/lib/postgresql/data
 
-    app-prod:
+    web-app:
         env_file:
             - app_env/db
         environment:
-            - DEBUG=0
-        image: onepycoder/landing_cms:1.02
+            - DEBUG=${DEBUG}
+        image: onepycoder/landing_cms:1.03
         entrypoint: ['/bin/bash', '/entrypoint.sh', 'gunicorn', 'landing_cms']
         volumes:
             - ./src:/python_app
@@ -24,16 +24,3 @@ services:
         depends_on:
             - db
         restart: always
-
-    app-dev:
-        env_file:
-            - app_env/db
-        environment:
-            - DEBUG=1
-        image: onepycoder/landing_cms:1.02
-        volumes:
-            - ./src:/python_app
-        ports:
-            - '127.0.0.1:8101:8000'
-        depends_on:
-            - db

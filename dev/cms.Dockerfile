@@ -1,4 +1,4 @@
-FROM onepycoder/python:3.7.4.1
+FROM onepycoder/python:3.8.0.2
 
 ENV TZ=Europe/Kiev
 ARG DEV_DIR=dev

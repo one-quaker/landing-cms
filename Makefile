@@ -1,4 +1,4 @@
-APP_NAME=app-dev
+APP_NAME=web-app
 
 
 start_docker:
@@ -13,7 +13,7 @@ app_restart:
 app_logs:
 	docker-compose logs -f $(APP_NAME)
 
-app_attach:
+dev_mode:
 	docker-compose exec $(APP_NAME) /bin/zsh
 
 all_logs:

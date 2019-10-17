@@ -1,14 +1,15 @@
 FROM ubuntu:18.04
 
-ENV PYTHON_VERSION=3.7.4
-ENV PYENV_VERSION=1.2.13
+ENV PYTHON_VERSION=3.8.0
+ENV PYENV_VERSION=1.2.14
+ENV PYENV_VIRTUALENV_VERSION=1.1.5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
 RUN apt update -y && apt upgrade -y && apt install -y git make build-essential \
 sudo bash zsh curl wget nano vim tmux htop tzdata locales \
-postgresql-client iputils-ping telnet \
+postgresql-client iputils-ping telnet libpq-dev \
 libev-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
 libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils \
 tk-dev libffi-dev liblzma-dev python-openssl \
@@ -26,6 +27,7 @@ ENV APP_DIR=/$APP_NAME
 ENV PYENV_DIR=$HOME/.pyenv
 ENV PYENV_BIN_ROOT=$PYENV_DIR/bin
 ENV PYENV_BIN=$PYENV_BIN_ROOT/pyenv
+ENV PYENV_VIRTUALENV_DIR=$PYENV_DIR/plugins/pyenv-virtualenv
 ENV ENV_BIN_ROOT=$PYENV_DIR/versions/$APP_NAME/bin
 ENV ENV_PYTHON_BIN=$ENV_BIN_ROOT/python
 ENV ENV_PIP_BIN=$ENV_BIN_ROOT/pip
@@ -42,7 +44,8 @@ RUN echo 'Europe/Kiev' > /etc/timezone && dpkg-reconfigure -f noninteractive tzd
 USER $USER
 WORKDIR $HOME
 RUN git clone https://github.com/pyenv/pyenv.git $PYENV_DIR \
-&& git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_DIR/plugins/pyenv-virtualenv \
+&& git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_VIRTUALENV_DIR \
+&& cd $PYENV_VIRTUALENV_DIR && git checkout tags/v$PYENV_VIRTUALENV_VERSION \
 && cd $PYENV_DIR && git checkout tags/v$PYENV_VERSION
 
 WORKDIR $HOME
