@@ -16,6 +16,9 @@ app_logs:
 dev_mode:
 	docker-compose exec $(APP_NAME) /bin/zsh
 
+run_dev:
+	docker-compose exec $(APP_NAME) /bin/zsh /python_app/run_dev.sh
+
 all_logs:
 	docker-compose logs -f
 
