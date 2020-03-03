@@ -1,15 +1,15 @@
 FROM ubuntu:18.04
 
-ENV PYTHON_VERSION=3.8.0
-ENV PYENV_VERSION=1.2.14
+ENV PYTHON_VERSION=3.8.1
+ENV PYENV_VERSION=1.2.16
 ENV PYENV_VIRTUALENV_VERSION=1.1.5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
 RUN apt update -y && apt upgrade -y && apt install -y git make build-essential \
-sudo bash zsh curl wget nano vim tmux htop tzdata locales \
-postgresql-client iputils-ping telnet libpq-dev \
+sudo bash zsh curl wget nano vim tmux htop tzdata locales gettext \
+postgresql-client iputils-ping telnet libpq-dev python3-dev net-tools traceroute \
 libev-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
 libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils \
 tk-dev libffi-dev liblzma-dev python-openssl \

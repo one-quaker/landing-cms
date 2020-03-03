@@ -5,7 +5,7 @@ services:
         build:
             dockerfile: ./dev/Dockerfile
             context: ./
-        image: onepycoder/python:3.8.0.3
+        image: onepycoder/python:3.8.1-v2
 
     python_build_cms:
         build:
